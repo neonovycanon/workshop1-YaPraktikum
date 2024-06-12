@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import seaborn as sns
 import os
 
 #1 Получение пути к данным
@@ -130,3 +131,12 @@ def clf_metrics(y_true, y_pred, y_pred_prob = None, roc_auc_calc = False):
         return pd.DataFrame(metrics, index=[i for i in range(len(metrics))]).T.drop([i for i in range(1, 5)], axis = 1)
     else:
         return pd.DataFrame(metrics, index=[i for i in range(len(metrics))]).T.drop([i for i in range(1, 4)], axis = 1)
+      
+#13 Поиск пропусков
+def na_count(data, feat, retr_dat = False):
+  na_n = data[feat].isna().sum()
+  print(f'Число пропусков в признаке {feat}: ', na_n)
+  if retr_dat:
+    return na_n
+  else:
+    pass
