@@ -136,7 +136,7 @@ def clf_metrics(y_true, y_pred, y_pred_prob = None, roc_auc_calc = False):
                'F1': f1_score(y_true, y_pred),
                'Accuracy': accuracy_score(y_true, y_pred),
               'Precision': precision_score(y_true, y_pred)}
-    if ~roc_auc_calc:
+    if roc_auc_calc = True:
         metrics.update({'Roc-Auc': roc_auc_score(y_true, y_pred_prob)})
         return pd.DataFrame(metrics, index=[i for i in range(len(metrics))]).T.drop([i for i in range(1, 5)], axis = 1)
     else:
