@@ -3,6 +3,15 @@ import numpy as np
 import seaborn as sns
 import os
 
+#Regression metrics
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+
+#Classification metrics
+from sklearn.metrics import (accuracy_score, f1_score,
+                            recall_score, precision_score,
+                            roc_auc_score)
+                            
+
 #1 Получение пути к данным
 def path_check(path_name):
   '''Проверка существования пути к файлу'''
@@ -78,6 +87,7 @@ def pivot_table_analysis(data, indexes):
 
 #8 Расчёт метрик качества регрессии
 def regr_metrics(model, data, target_true):
+    '''Могут быть проблемы с работой функции, так как она написана под старую версию sklearn'''
     pred_temp = model.predict(data) 
     metrics = pd.DataFrame({'Metrics':['R2_score', 'RMSE_score', 'MAE_score', 'SMAPE_Score'],
                             'Scores': [r2_score(target_true.values, pred_temp),
